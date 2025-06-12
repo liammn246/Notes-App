@@ -9,6 +9,19 @@
 </head>
 <body>
 <a id="notes" href="{% url 'index' %}">Go to Notes</a>
-    <p>Hey</p>
+<div id="gallery">
+{% for note in notes %}
+<div class="note">
+    <p>{{ note.title }}</p>
+    <img src="{{ note.image_data }}" alt="{{ note.title }}" style="width: 200px; height: auto;" />
+    
+    <form method="POST" action="{% url 'delete_note' note.id %}" style="margin-top: 10px;">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+{% endfor %}
+</div>
 </body>
 </html>
