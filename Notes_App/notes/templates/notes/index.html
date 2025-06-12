@@ -5,23 +5,27 @@
     <meta charset="UTF-8" />
     <title>Notes App</title>
     <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
+    <meta name="csrf-token" content="{{ csrf_token }}">
 </head>
 <body>
+    <a id="gallery" href="{% url 'gallery_home' %}">Go to Gallery</a>
     <div id="left-row">
         <p id="note_title">Untitled</p>
         <canvas id="draw_space"></canvas>
     </div>
+
     <div id="right-row">
-        <div id ="colors">
-        <button class="button" id="black_button"></button>
-        <button class="button" id="white_button"></button>
-        <button class="button" id="red_button"></button>
+        <div id="colors">
+            <button class="button" id="black_button"></button>
+            <button class="button" id="white_button"></button>
+            <button class="button" id="red_button"></button>
         </div>
-        <input id ="pen_size" type="range" min="1" max="30" value="10" step="1">
+        <input id="pen_size" type="range" min="1" max="30" value="10" step="1">
         <button id="upload">
             <div id="decoration"></div>
         </button>
     </div>
+
     <script src="{% static 'notes/canvas.js' %}"></script>
 </body>
 </html>
